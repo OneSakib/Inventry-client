@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "http://192.168.213.42:8080/api";
 
 // Auth
 export function loginService(data) {
@@ -45,7 +45,6 @@ export function setTokenService(token) {
 // Crud Inventry
 
 export function fetchCustomersService() {
-  console.log("CALLE", process.env);
   return axios.get("/getcustomers");
 }
 

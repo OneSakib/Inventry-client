@@ -25,7 +25,7 @@ export default function EditQrCode() {
       .finally(() => {
         hideLoder();
       });
-  }, []);
+  }, [customerId]);
   const submit = async (e) => {
     e.preventDefault();
     let data = {

@@ -23,9 +23,8 @@ const Register = () => {
         })
         .then(async (res) => {
           if (res !== undefined) {
-            console.log("User-------", await res.data);
-            // toast.success("successfully register, now you can login!");
-            // navigate("/login");
+            toast.success("successfully register, now you can login!");
+            navigate("/login");
           }
         });
     } else {
