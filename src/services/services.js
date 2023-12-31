@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://192.168.213.42:8080/api";
+axios.defaults.baseURL = "https://inventry-server-a3qn.onrender.com/api";
 
 // Auth
 export function loginService(data) {
