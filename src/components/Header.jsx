@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import { userLoggedIn, removeToken } from "../services/services";
+import { userLoggedInService, removeTokenService } from "../services/services";
 export default function Header() {
   const location = useLocation();
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const handleLogout = () => {
-    removeToken().then((res) => {
+    removeTokenService().then((res) => {
       setLogin(false);
       toast.success("Successfully Logout!");
       navigate("/");
     });
   };
   useEffect(() => {
-    userLoggedIn()
+    userLoggedInService()
       .then((res) => {
         setLogin(true);
       })

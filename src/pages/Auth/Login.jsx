@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../../services/services";
+import { loginService, setTokenService } from "../../services/services";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -16,9 +16,7 @@ const Login = () => {
       email,
       password,
     };
-    if (
-      email != undefined &&
-      password != undefined &&
+    if (      
       email.length > 0 &&
       password.length > 0
     ) {
@@ -31,8 +29,10 @@ const Login = () => {
           if (res !== undefined) {
             const token = await res.data?.token;
             localStorage.setItem("token", token);
-            toast.success("successfully login!");
-            navigate("/");
+            setTokenService(token).then((res) => {
+              toast.success("successfully login!");
+              navigate("/");
+            });
           }
         });
     } else {

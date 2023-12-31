@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import QRCode from "react-qr-code";
 import { showLoader, hideLoder } from "../helpers";
 import {
-  fetchCustomers,
-  deleteCustomer,
-  userLoggedIn,
+  fetchCustomersService,
+  deleteCustomerService,
+  userLoggedInService,
 } from "../services/services";
 import { confirmAlert } from "react-confirm-alert";
 import { toast } from "react-toastify";
@@ -15,7 +15,7 @@ const Home = () => {
   const [users, setUser] = useState([]);
   function fetchEntries() {
     showLoader();
-    fetchCustomers()
+    fetchCustomersService()
       .catch((err) => {})
       .then(async (res) => {
         if (res !== undefined) {
@@ -30,7 +30,7 @@ const Home = () => {
     fetchEntries();
   }, []);
   function confirmDelteCustomer(id) {
-    userLoggedIn()
+    userLoggedInService()
       .then((res) => {
         confirmAlert({
           title: "Confirm to delete?",
@@ -56,7 +56,7 @@ const Home = () => {
   }
   const handledeleteCustomer = async (id) => {
     if (id !== undefined) {
-      deleteCustomer(id)
+      deleteCustomerService(id)
         .catch((err) => {})
         .then(async (res) => {
           toast.success("Customer has been deleted!");
@@ -83,7 +83,7 @@ const Home = () => {
     img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
   };
   function handleEdit(id) {
-    userLoggedIn()
+    userLoggedInService()
       .then((res) => {
         navigate("/editqrcode/" + id);
       })

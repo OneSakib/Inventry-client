@@ -2,61 +2,14 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:5000";
 
+// Auth
 export function loginService(data) {
-  if (data !== undefined) {
-    return axios.post("/login", data);
-  } else {
-    console.log("ERRO");
-  }
+  return axios.post("/login", data);
 }
 export function registerService(data) {
-  if (data !== undefined) {
-    return axios.post("/register", data);
-  } else {
-    console.log("ERRO");
-  }
+  return axios.post("/register", data);
 }
-
-export function fetchCustomers() {
-  return axios.get("/getcustomers");
-}
-
-export function deleteCustomer(id) {
-  if (id !== undefined) {
-    return axios.delete("/delete/" + id);
-  } else {
-    console.log("id not found");
-  }
-}
-export function generateQrCode(data) {
-  if (data !== undefined) {
-    return axios.post("/generateqrcode", data);
-  } else {
-    console.log("ERRO");
-  }
-}
-export function updateQrCodeService(id, data) {
-  if (data !== undefined) {
-    return axios.put("/updatecustomer/" + id, data);
-  } else {
-    console.log("ERRO");
-  }
-}
-export function getCustomerService(id) {
-  if (id !== undefined) {
-    return axios.get("/getcustomer/" + id);
-  } else {
-    console.log("ERRO");
-  }
-}
-export function dispatchCustomerService(id) {
-  if (id !== undefined) {
-    return axios.post("/dispatch_customer/" + id);
-  } else {
-    console.log("ERRO");
-  }
-}
-export function userLoggedIn() {
+export function userLoggedInService() {
   return new Promise((resolve, reject) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -67,7 +20,7 @@ export function userLoggedIn() {
   });
 }
 
-export function removeToken() {
+export function removeTokenService() {
   return new Promise((resolve, reject) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -78,13 +31,36 @@ export function removeToken() {
     }
   });
 }
-export function setToken(token) {
+export function setTokenService(token) {
   return new Promise((resolve, reject) => {
-    if (token != undefined) {
+    if (token !== undefined) {
       localStorage.setItem("token", token);
       resolve("Set Token");
     } else {
       reject("No Token");
     }
   });
+}
+
+// Crud Inventry
+
+export function fetchCustomersService() {
+  console.log("CALLE", process.env);
+  return axios.get("/getcustomers");
+}
+
+export function deleteCustomerService(id) {
+  return axios.delete("/delete/" + id);
+}
+export function generateQrCodeService(data) {
+  return axios.post("/generateqrcode", data);
+}
+export function updateQrCodeService(id, data) {
+  return axios.put("/updatecustomer/" + id, data);
+}
+export function getCustomerService(id) {
+  return axios.get("/getcustomer/" + id);
+}
+export function dispatchCustomerService(id) {
+  return axios.post("/dispatch_customer/" + id);
 }

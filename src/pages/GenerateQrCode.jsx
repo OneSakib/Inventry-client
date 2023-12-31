@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { generateQrCode } from "../services/services";
+import { generateQrCodeService } from "../services/services";
 import { toast } from "react-toastify";
 const GenerateQrCode = () => {
   const navigate = useNavigate();
@@ -11,10 +11,7 @@ const GenerateQrCode = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (
-      name != undefined &&
-      date != undefined &&
-      quantity != undefined &&
+    if (      
       name.length > 0 &&
       date.length > 0 &&
       quantity.length > 0
@@ -24,7 +21,7 @@ const GenerateQrCode = () => {
         date: changeDateFormat(date),
         quantity,
       };
-      generateQrCode(data)
+      generateQrCodeService(data)
         .catch((err) => {})
         .then(async (res) => {
           toast.success("Customer data successfully added!");
