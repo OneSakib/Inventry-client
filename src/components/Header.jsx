@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <div className="w-full h-24 p-4 text-lg text-[#11009E] font-semibold">
-      <div className="flex justify-between items-center mx-8">
+      <div className="flex justify-between items-center mx-8 flex-wrap">
         <button onClick={() => navigate("/")}>
           {" "}
           Inventory Management System{" "}

@@ -79,7 +79,7 @@ const ScanQrCode = () => {
   }
   return (
     <div className="mb-auto w-full p-4">
-      <div className="flex mt-6 justify-center gap-32 h-[80vh] ">
+      <div className="flex mt-6 justify-center gap-32 h-[80vh] flex-wrap">
         {/*Upload QR Code  */}
         <div className="w-[550px] gap-6 text-sm flex justify-center flex-col items-center p-8 shadow-slate-400 shadow-lg">
           <h1 className="text-2xl font-semibold text-center text-blue-800">
@@ -116,7 +116,7 @@ const ScanQrCode = () => {
           </div>
         </div>
         {/* Scan QR Code */}
-        <div className="w-[550px] gap-6 text-sm flex justify-center flex-col items-center p-8 shadow-slate-400 shadow-lg">
+        <div className="w-[550px] gap-6 text-sm flex justify-center flex-col items-center p-8 shadow-slate-400 shadow-lg pb-4">
           <h1 className="text-2xl font-semibold text-center text-blue-800">
             {" "}
             Scan QR Code{" "}
